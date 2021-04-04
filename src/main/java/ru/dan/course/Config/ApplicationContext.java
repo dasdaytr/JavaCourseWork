@@ -10,8 +10,6 @@ public class ApplicationContext {
     }
     public SessionFactory getSesseion(){
         Beanconnectiondatebase ios = context.getBean("beanconnectiondatebase", Beanconnectiondatebase.class);
-        Beanconnectiondatebase ios2 = context.getBean("beanconnectiondatebase", Beanconnectiondatebase.class);
-        System.out.println(ios.hashCode() +" " +" " +ios2.hashCode());
         return ios.getSessionFactory();
     }
 }
