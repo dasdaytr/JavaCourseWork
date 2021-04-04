@@ -3,7 +3,9 @@ package ru.dan.course.DAO;
 import com.sun.istack.NotNull;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.dan.course.Models.infoRegistrationUser;
+
 
 public class DAOinfoUser {
     private static SessionFactory factory;
