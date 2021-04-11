@@ -15,4 +15,13 @@ public class infoRegistrationUser {
     private String lastname;
     private String login;
     private String password;
+    private String passwordReturn;
+    public infoRegistrationUser checkClass(infoRegistrationUser check){
+        if (check.getPassword().equals("") || check.getLogin().equals("") ||
+            check.getFirstname().equals("") || check.getLastname().equals("") ||
+            check.getEmail().equals("")){
+            return null;
+        }
+        return check;
+    }
 }

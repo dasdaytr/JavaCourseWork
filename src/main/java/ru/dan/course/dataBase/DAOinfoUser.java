@@ -1,18 +1,25 @@
-package ru.dan.course.DAO;
+package ru.dan.course.dataBase;
 
 import com.sun.istack.NotNull;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
+import ru.dan.course.Config.ApplicationContext;
+import ru.dan.course.Config.SpringConfig;
 import ru.dan.course.Models.infoRegistrationUser;
-
-
+@Component
 public class DAOinfoUser {
     private static SessionFactory factory;
+    final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+    ApplicationContext applicationContext;
 
     public DAOinfoUser (@NotNull final SessionFactory factory) {
         this.factory = factory;
+        applicationContext =  new ApplicationContext(context);
+
     }
+    public DAOinfoUser(){}
 
 
     public static void create(@NotNull final infoRegistrationUser engine) {
