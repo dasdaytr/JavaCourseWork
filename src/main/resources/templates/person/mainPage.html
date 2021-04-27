@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
+    <style>
+        .basket a{
+            text-decoration: none;
+            text-align: right;
+            color: coral;
+
+        }
+        .a{
+            position: relative;
+
+            text-align: center;
+        }
+        a{
+
+
+        }
+    </style>
 </head>
 <body>
-    <h1>Успешный вход</h1>
+    <div class="a">
+        <h1>Успешный вход</h1>
+        <div class="basket"><a href="">Корзина</a></div>
+    </div>
     <p th:text="${info.toString()}"></p>
+
 </body>
 </html>

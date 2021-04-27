@@ -13,41 +13,45 @@
     </style>
 </head>
 <body>
-<form action="/sing_in" method="post" >
-    <div class="text" th:text="${errorAll}"></div>
-    <div class="position" >
+<form action="/sing_in" method="post" th:object="${infoRegistrationUser}" >
+    <div class="text"></div>
+    <div class="position">
         <label for="firstname">Enter firstname:</label>
-        <input type="text" name="firstname" id="firstname"/>
+        <input type="text" name="firstname"  id="firstname"/>
+        <div style="color:red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>
     </div>
 
     <div class="position">
         <label for="lastname">Enter lastname:</label>
         <input type="text" name="lastname" id="lastname"/>
+        <div style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
     </div>
 
     <div class="position" align="left">
         <label for="login">Enter login:</label>
-        <input type="text" name="login" id="login"/>
-        <div class="text" th:text="${error}"></div>
+        <input type="text" name="login" id="login" />
+        <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
+
     </div>
 
     <div class="position">
         <label for="email">Enter email:</label>
-        <input type="text" name="email" id="email"/>
-        <div class="text" th:text="${errorEmail}"></div>
+        <input type="text" name="email" id="email" />
+        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+
     </div>
 
     <div class="position">
         <label for="password">Enter password:</label>
-        <input type="text" name="password" id="password"/>
-        <div class="text" th:text="${errorPassword}"></div>
+        <input type="password" name="password" id="password" />
+        <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+
     </div>
 
     <div class="position">
         <label for="passwordReturn">Enter passwordReturn:</label>
-        <input type="text" name="passwordReturn" id="passwordReturn"/>
+        <input type="password" name="passwordReturn" id="passwordReturn" />
     </div>
-
     <div>
         <input type="submit" value="Create">
     </div>
