@@ -1,45 +1,41 @@
 <!--
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>Basket</title>
     <style>
-        .basket a{
-            text-decoration: none;
-            text-align: right;
-            color: coral;
+        table {
+            border: 1px solid grey;
+            width: 100%;
 
         }
-        .a{
-            position: relative;
-
-            text-align: center;
+        /* границы ячеек первого ряда таблицы */
+        th {
+            border: 1px solid grey;
         }
-        a{
-
-
+        /* границы ячеек тела таблицы */
+        td {
+            border: 1px solid grey;
         }
     </style>
 </head>
 <body>
-    <div class="a">
-        <h1>Успешный вход</h1>
-        <div class="basket"><a href="/mainPage/basket">Корзина</a></div>
-    </div>
-    <p th:text="${info.toString()}"></p>
-    <a href="/product/beef">Говядина</a>
+<table>
+
+    <tr><th>Мясо</th><th>цена</th><th>колличество</th></tr>
+    <tr th:each="basket:${basket}">
+        <td th:text="${basket.getNameproduct()}"></td><td th:text="${basket.getPrice()}"></td><td th:text="${basket.getCount()}"></td>
+    </tr>
+</table>
 </body>
 </html>-->
 
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
     <title>Document</title>
     <meta name="viewport" content="device-width">
@@ -475,6 +471,19 @@
             margin-top:30px;
             background: white;
         }
+        .form_button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            font-size: 16xp;
+            color :#fff ;
+            background-color: #0071f0;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
         .iner-futer{
             display: flex;
             justify-content: space-between;
@@ -555,19 +564,25 @@
                     <span></span>
                 </div>
                 <li class="abc">
-                    <a href="/mainPaage" class="menu-link">Каталог</a>
-                    <ul class="sub-menu-list">
+                    <a href="../index.html" class="menu-link">Каталог</a>
+                    <ul class="sub-menu-listt">
                         <li >
-                            <a href="/product/beef" class="sub-menu-link">Мясо птицы</a>
+                            <a href="proch.html" class="sub-menu-link">Процессоры</a>
                         </li>
                         <li>
-                            <a href="html/vid.html" class="sub-menu-link">Говядина</a>
+                            <a href="vid.html" class="sub-menu-link">Видеокарты</a>
                         </li>
                         <li>
-                            <a href="html/MT.html" class="sub-menu-link">Свинина</a>
+                            <a href="MT.html" class="sub-menu-link">Материнские платы</a>
                         </li>
                         <li>
-                            <a href="html/SSD.html" class="sub-menu-link">Молочные продукты</a>
+                            <a href="SSD.html" class="sub-menu-link">SSD</a>
+                        </li>
+                        <li>
+                            <a href="JD.html" class="sub-menu-link">Жесткие диски</a>
+                        </li>
+                        <li>
+                            <a href="OP.html" class="sub-menu-link">оперативная память</a>
                         </li>
                     </ul>
                 </li>
@@ -584,39 +599,140 @@
         </div>
     </div>
 </div>
-<div class="chenth">
+<div class="kor">
     <div class="container">
-        <div class="imagic">
-            <div class="url-1">Главная</div>
-            <div class="texnika">
-                <div class="url-2">
-                    <a href="html/vid.html" class="tex">
-                        <img src="img/index/1438411_v06_b.jpg" alt="">
-                    </a>
-                    <div class="url-3">Мясо птицы</div>
+        <div class="korzina">Корзина</div>
+        <div class="bbb">
+
+            <table>
+                <tr>
+                    <td>Товар</td>
+                    <td>Цена</td>
+                    <td>Колличество</td>
+                    <td>Сумма</td>
+                    <td></td>
+                </tr>
+                <tr th:each="basket:${basketPerson}">
+                        <td class="del1" ><p th:text="${basket.getNameproduct()}"></p><input type="hidden" th:value="${basket.getNameproduct()}" name="nameProduct"></td>
+                        <td class="del1" ><p th:text="${basket.getPrice()}"></p><input type="hidden" th:value="${basket.getPrice()}"  name="price"></td>
+                        <td class="del1" >
+                            <div class="number">
+                                <button id="asd" class="number-minus" type="button" data-id="arr">-</button>
+                                <input id="ada"type="number" min="0" th:value="${basket.getCount()}"  readonly>
+                                <button id="vak"class="number-plus" type="button" >+</button>
+                            </div>
+                        </td>
+                        <td class="del1"><p id = "p1" th:text="${basket.getSumPrice()}"></p> <input type="hidden" th:value="${basket.getSumPrice()}" form="myForm"></td>
+                        <td class="del1">
+                            <form action="/mainPage/baskett" method="post">
+                            <input type="hidden" th:value="${basket.getNameproduct()}" name="nameProduct">
+                            <input type="submit" value="Удалить" class="form_button">
+                            </form>
+                        </td>
+                </tr>
+            </table>
+            <div class="jav">
+                <div class="koll">
+                    <div class="k"><p>Количесто товара</p></div>
+                    <div class="chislo"><p id="p4">2</p></div>
                 </div>
-                <div class="url-2">
-                    <a href="html/OP.html" class="tex">
-                        <img src="img/index/lg.jpg" alt="">
-                    </a>
-                    <div class="url-3">Говядина</div>
-                </div>
-                <div class="url-2">
-                    <a href="html/SSD.html" class="tex">
-                        <img src="img/index/120g.jpg" alt="">
-                    </a>
-                    <div class="url-3">Свинина</div>
-                </div>
-                <div class="url-2">
-                    <a href="html/JD.html" class="tex">
-                        <img src="img/index/3dad2e4c8009f0fb25e74a5116f265a1.jpg" alt="">
-                    </a>
-                    <div class="url-3">Молочные продукты</div>
+                <div class="koll">
+                    <div class="inog"><p>Итого к олате</p></div>
+                    <div class="OS"><p id="p3">19000 Руб</p></div>
                 </div>
             </div>
+            <div class="oplate"><div class="block"><a href="" class="button1">Оплатить</a></div></div>
         </div>
     </div>
 </div>
+<script type="text/javascript" src=" https://code.jquery.com/jquery-1.11.2.js "></script>
+<script>
+    let button = document.getElementById("asd");
+    button.addEventListener('click',function(){
+            stepodown();
+        }
+    );
+    function stepodown(){
+        let input = document.getElementById('ada');
+        if (input){
+            input.stepDown();
+
+            document.getElementById("p1").innerHTML = document.getElementById('ada').value*16000 + " руб";
+            S1();
+        }
+    }
+    let button1 = document.getElementById("vak");
+    button1.addEventListener('click',function(){
+        stepoUp();}
+    );
+    function stepoUp(){
+        let input = document.getElementById('ada');
+
+        if (input){
+            input.stepUp();
+
+            document.getElementById("p1").innerHTML = document.getElementById('ada').value*16000 + " руб";
+            S1();
+        }
+    }
+    let button2 = document.getElementById("asdd");
+    button2.addEventListener('click',function(){
+        stepodownn();}
+    );
+    function stepodownn(){
+        let input = document.getElementById('adad');
+
+        if (input){
+            input.stepDown();
+
+            document.getElementById("p2").innerHTML = document.getElementById('adad').value*3000 + " руб";
+            S1();
+        }
+    }
+    let button3 = document.getElementById("vakd");
+    button3.addEventListener('click',function(){
+        stepoUpp();}
+    );
+    function stepoUpp(){
+        let input = document.getElementById('adad');
+
+        if (input){
+            input.stepUp();
+
+            document.getElementById("p2").innerHTML = document.getElementById('adad').value*3000 + " руб";
+            S1();
+
+
+        }
+    }
+    function prees(){
+        document.getElementById('ada').value=0;
+        document.getElementById('p3').innerHTML = document.getElementById('adad').value*3000 +" Руб";
+        document.getElementById('p4').innerHTML =document.getElementById('adad').value;
+
+    }
+    function pree(){
+        document.getElementById('adad').value=0;
+        document.getElementById('p3').innerHTML = document.getElementById('ada').value*16000 +" Руб";
+        document.getElementById('p4').innerHTML =document.getElementById('ada').value;
+    }
+    function S1(){
+
+
+        document.getElementById('p3').innerHTML = document.getElementById('ada').value*16000+document.getElementById('adad').value*3000 +" Руб";
+        document.getElementById('p4').innerHTML = +document.getElementById('ada').value + +document.getElementById('adad').value;
+    }
+    let button4 = document.getElementById("aaad");
+    button4.addEventListener('click',function(){
+        pree();}
+    );
+    let button5 = document.getElementById("aaadd");
+    button5.addEventListener('click',function(){
+        prees();}
+    );
+</script>
+
+<script src="..\JS/java.js"></script>
 <div class="futer">
     <div class="container">
         <div class="iner-futer">
@@ -637,12 +753,12 @@
             </div>
             <div class="amv2">
                 <h3>МЕНЮ В ФУТОРЕ</h3>
-                <a class="lin" href="">Видеокарты</a>
-                <a class="lin" href="">Процессоры</a>
-                <a class="lin" href="">Материнские платы</a>
-                <a class="lin" href="">SSD</a>
-                <a class="lin" href="">Оперативная память</a>
-                <a class="lin" href="">Жесткие диски</a>
+                <a class="lin" href="vid.html">Видеокарты</a>
+                <a class="lin" href="proch.html">Процессоры</a>
+                <a class="lin" href="MT.html">Материнские платы</a>
+                <a class="lin" href="SSD.html">SSD</a>
+                <a class="lin" href="OP.html">Оперативная память</a>
+                <a class="lin" href="JD.html">Жесткие диски</a>
             </div>
             <div class="amv1">
                 <h3>ПРИНИМАЕМ К ОПЛАТЕ</h3>
@@ -650,7 +766,7 @@
                     <h3>БУДЬ В КУРСЕ</h3>
                     <div class="icon">
                         <div class="i">
-                            <a href="https://www.instagram.com/"><img src="..\icon\Instagram_icon-icons.com_66804.png" alt=""></a>
+                            <a href="https://www.instagram.com/"><img src="..\img\icon\Instagram_icon-icons.com_66804.png" alt=""></a>
                         </div>
                         <div class="i">
                             <a href="https://web.telegram.org/#/im"> <img src="..\img\icon\telegram_icon-icons.com_72055.png" alt=""></a>
@@ -662,5 +778,6 @@
                 </div>
             </div>
         </div>
+    </div>
 </body>
 </html>

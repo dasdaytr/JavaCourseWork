@@ -24,4 +24,5 @@ public class MainPagePersonController {
         model.addAttribute("info",personRepository.findByEmail(person.getEmail()));
         return "person/mainPage";
     }
+
 }

@@ -1,0 +1,342 @@
+body{
+    margin:0;
+    font-size:14px;
+    line-height:2;
+    font-family: 'Open Sans', sans-serif;
+}
+*,
+*:after,
+*:before{
+    box-sizing: border-box;
+}
+
+/*Header
+=========================================================================================*/
+.hide {
+    display: none;
+}
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin:0 auto;
+}
+
+.logo{
+    font-size: 40px;
+    color:#c21e3a;
+}
+.iner__link{
+    display: block;
+    text-decoration: none;
+    color:grey;
+    font-size: 17px;
+
+}
+.header__iner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: block;
+}
+
+p{
+    line-height: 0.9em;
+}
+.a{
+    font-size:16px;
+    font-weight: 700;
+}
+.b{
+    font-size: 15px;
+}
+form {
+    position: relative;
+    width: 300px;
+    margin: 0 auto;
+}
+input {
+    width: 100%;
+    height: 42px;
+    padding-left: 10px;
+    border: 2px solid #7BA7AB;
+    border-radius: 5px;
+    outline: none;
+    background: #F9F0DA;
+    color: #9E9C9C;
+}
+.serch{
+
+}
+button {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    background: #7BA7AB;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+button:before {
+    content: "\f002";
+    font-family: FontAwesome;
+    font-size: 16px;
+    color: #F9F0DA;
+}
+.burger{
+    margin-top: 20px;
+    display: none;
+}
+@media (max-width: 1200px) {
+    .burger{
+        display: block;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        transition: all 0.3s ease 0s;
+    }
+    span{
+        position: absolute;
+        width: 100%;
+        background: white;
+        height: 1px;
+        left: 0;
+        top:9px;
+
+    }
+    .burger:before,
+    .burger:after{
+        content: '';
+        background-color: white;
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        left: 0;
+        transition: all 0.3s ease 0s;
+    }
+    .burger:before{
+        top:0px;
+    }
+    .burger:after{
+        bottom: 0px;
+    }
+    .container{
+        max-width: 970px;
+    }
+    .abc{
+        visibility: hidden;
+    }
+    .iner__link{
+        font-size: 18px;
+    }
+    .active:before{
+        transform: rotate(45deg);
+        top:10px;
+    }
+    .active:after{
+        transform: rotate(-45deg);
+        bottom: 9px;
+    }
+    .active span{
+        transform: scale(0);
+    }
+    .texnika.active{
+        visibility: hidden;
+    }
+    .chenth.active{
+        transition: all 0.4s ease 0s;
+        background: #a81a32;
+
+    }
+    .sub-menu-list.active{
+        visibility: visible;
+        box-shadow: 0 0 0px;
+        width: 500px;
+    }
+    .url-1.active{
+        visibility: hidden;
+    }
+    .sub-menu-link.active{
+        color: white;
+        font-size: 30px;
+        font-weight: 700;
+    }
+}
+@media (max-width: 992px) {
+    .container{
+        max-width: 850px;
+    }
+    form{
+        width: 200px;
+    }
+    .a{
+        font-size: 18px;
+    }
+    .b{
+        font-size: 18px;
+    }
+}
+@media (max-width: 767px) {
+    form{
+        width: 150px;
+    }
+    .container{
+        max-width: none;
+    }
+
+
+
+}
+/*Навигация
+===========================================================*/
+
+.demo{
+    background: #c21e3a;
+}
+.chapka{
+    position: relative;
+
+}
+.chapka a{
+
+    text-decoration: none;
+    color:#fff;
+    font-size: 20px;
+}
+.chapka li{
+
+    list-style: none;
+}
+.menu-list{
+
+    display: flex;
+}
+.menu-list>li{
+    line-height: 3.1;
+    margin-right: 30px;
+}
+.abc{
+    max-width: 260px;
+    min-width: 260px;
+    margin-left:-79px;
+    padding-left: 10px;
+    width: 260px;
+    background: #a81a32;
+}
+.sub-menu-list{
+    max-width: 560px;
+    box-shadow: 0 0 5px;
+    position: absolute;
+    padding-left: 10px;
+    left: 0;
+    width: 260px;
+    top:61px;
+}
+.menu-list{
+    padding-left: 79px;
+}
+.imagic{
+    margin-left: 260px;
+    font-size: 15px;
+}
+.sub-menu-list a{
+    left: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color:#454545;
+}
+/*центральная часть сайта
+=================================*/
+.texnika{
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    margin-left: 0;
+
+}
+
+.url-3{
+    color:#a81a32;
+    font-size: 17px;
+    text-align:center;
+
+
+}
+.url-2{
+    text-align: center;
+    margin-top: 30px;
+    margin-right: 60px;
+
+    max-width: 200px;
+
+}
+.url-2:hover{
+    box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
+}
+.url-1{
+    margin-top:-20px;
+    font-size: 30px;
+    font-weight: 700;
+    margin-left: 30px;
+}
+.btn{
+    text-decoration: none;
+    background: #c21e3a;
+    padding: 5px 10px;
+    color: white;
+
+
+}
+.btn-div{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.btn:hover{
+    background: #a81a32;
+
+}
+.chena{
+    font-weight: 700;
+}
+/*Футер*/
+.futer{
+    margin-top:30px;
+    background: white;
+}
+.iner-futer{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: block;
+}
+.PRAIM{
+    font-size: 30px;
+    color: #a81a32;
+}
+.link{
+    margin-top: -10px;
+    display: block;
+    color:#a81a32;
+    line-height: 40px;
+}
+.lin{
+    margin-top: -10px;
+    display: block;
+    font-size: 16px;
+    color:grey;
+    line-height: 40px;
+    text-decoration:none;
+}
+.met{
+    margin-top: 70px;
+}
+.icon{
+    display: flex;
+
+}
+.i{
+    padding-right: 10px;
+}

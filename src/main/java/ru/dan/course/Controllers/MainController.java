@@ -10,30 +10,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import ru.dan.course.Config.WebSecurityConfig;
 import ru.dan.course.Models.Role;
 import ru.dan.course.Models.Status;
 import ru.dan.course.Models.person2;
 import ru.dan.course.Models.test;
 import ru.dan.course.repo.PersonRepository;
-import ru.dan.course.repo.PostBasketRepository;
 
 import javax.validation.Valid;
 
 @Controller
 public class MainController {
-
     @Autowired
-    PersonRepository personRepository;
-
+    private PersonRepository personRepository;
+    @Autowired
     public MainController(PersonRepository personRepository){
         this.personRepository = personRepository;
 
-    }
-
-    @GetMapping("/mainPage/{id}")
-    public String mainPagePerson(Model model, @PathVariable("id") int id) {
-        return "person/mainPage";
     }
     @GetMapping("/")
     public String mainPage() {
@@ -47,8 +39,9 @@ public class MainController {
 
     @PostMapping("/sing_in")
     public String signInInfo(@ModelAttribute("infoRegistrationUser") @Valid test infoRegistrationUser , BindingResult bindingResult,Model model) {
-        if(personRepository.findByEmail(infoRegistrationUser.getEmail()) == null &&
-           infoRegistrationUser.getPassword().equals(infoRegistrationUser.getPasswordReturn()) ){
+       /* if(personRepository.findByEmail(infoRegistrationUser.getEmail()) == null &&
+           infoRegistrationUser.getPassword().equals(infoRegistrationUser.getPasswordReturn())){
+            System.out.println(infoRegistrationUser.getPassword().equals(infoRegistrationUser.getPasswordReturn()));
             if(bindingResult.hasErrors()){
                 return "sing_in";
             }
@@ -56,10 +49,30 @@ public class MainController {
         else
             return "sing_in";
         savePerson(infoRegistrationUser);
-        return "redirect:/mainPaage";
+        return "redirect:/mainPaage";*/
+        System.out.println(infoRegistrationUser);
+        if (bindingResult.hasErrors()){
+            return "sing_in";
+        }
+        if (personRepository.findByEmail(infoRegistrationUser.getEmail()) == null ){
+            System.out.println("прошло");
+            if (infoRegistrationUser.getPassword().equals(infoRegistrationUser.getPasswordReturn())){
+                savePerson(infoRegistrationUser);
+                return "redirect:/mainPaage";
+            }
+            else{
+                model.addAttribute("error","Пароли не совпадают");
+                return "sing_in";
+            }
+        }
+        else{
+            model.addAttribute("errorEmail","Такой email уже существует");
+            return "sing_in";
+        }
     }
     @GetMapping("/singUp")
     public String singUp(Model model,@ModelAttribute person2 Person){
+        System.out.println(Person);
         return "sing_up";
     }
    @PostMapping("/singUp")

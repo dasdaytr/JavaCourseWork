@@ -41,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .loginPage("/singUp").permitAll().defaultSuccessUrl("/mainPaage")
                 .and()
-                .logout().permitAll().logoutSuccessUrl("/home");
+                .logout().permitAll().logoutSuccessUrl("/singUp");
 
     }
     @Bean
