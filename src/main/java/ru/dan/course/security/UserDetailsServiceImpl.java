@@ -18,7 +18,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         person2 user = postBasketRepository.findByEmail(email).orElseThrow(()-> new UsernameNotFoundException("User doest't exists"));
-        System.out.println("public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException"+ user);
         return SecurityUser.fromUser(user);
     }
 

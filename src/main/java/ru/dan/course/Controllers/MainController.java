@@ -29,7 +29,7 @@ public class MainController {
     }
     @GetMapping("/")
     public String mainPage() {
-        return "home";
+        return "sing_Up";
     }
 
     @GetMapping("/sing_in")
@@ -39,23 +39,10 @@ public class MainController {
 
     @PostMapping("/sing_in")
     public String signInInfo(@ModelAttribute("infoRegistrationUser") @Valid test infoRegistrationUser , BindingResult bindingResult,Model model) {
-       /* if(personRepository.findByEmail(infoRegistrationUser.getEmail()) == null &&
-           infoRegistrationUser.getPassword().equals(infoRegistrationUser.getPasswordReturn())){
-            System.out.println(infoRegistrationUser.getPassword().equals(infoRegistrationUser.getPasswordReturn()));
-            if(bindingResult.hasErrors()){
-                return "sing_in";
-            }
-        }
-        else
-            return "sing_in";
-        savePerson(infoRegistrationUser);
-        return "redirect:/mainPaage";*/
-        System.out.println(infoRegistrationUser);
         if (bindingResult.hasErrors()){
             return "sing_in";
         }
         if (personRepository.findByEmail(infoRegistrationUser.getEmail()) == null ){
-            System.out.println("прошло");
             if (infoRegistrationUser.getPassword().equals(infoRegistrationUser.getPasswordReturn())){
                 savePerson(infoRegistrationUser);
                 return "redirect:/mainPaage";
@@ -72,12 +59,10 @@ public class MainController {
     }
     @GetMapping("/singUp")
     public String singUp(Model model,@ModelAttribute person2 Person){
-        System.out.println(Person);
         return "sing_up";
     }
    @PostMapping("/singUp")
    public String singUpPost(@ModelAttribute person2 person2){
-        System.out.println(personRepository.findByEmail(person2.getEmail()).getId());
         return "redirect:/mainPaage";
    }
     private void savePerson(test person){
@@ -89,7 +74,6 @@ public class MainController {
         person3.setRole(Role.USER);
         person3.setStatus(Status.ACTIVE);
         person3.setPassword(new BCryptPasswordEncoder().encode(person.getPassword()));
-        System.out.println(person3);
         personRepository.save(person3);
     }
 }

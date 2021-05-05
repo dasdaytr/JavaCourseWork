@@ -793,7 +793,7 @@ false Zulu
     <database id="3" parent="1" name="infoRegistrationUser">
       <ObjectId>16409</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>994</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1095</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|16665|16647|1
 sequence|table|16904|16906|1
@@ -853,7 +853,7 @@ sequence|table|16904|16906|1
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>995</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1096</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <access-method id="17" parent="3" name="heap">
@@ -943,14 +943,13 @@ sequence|table|16904|16906|1
     </sequence>
     <table id="32" parent="16" name="basket">
       <ObjectId>16550</ObjectId>
-      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
-      <StateNumber>990</StateNumber>
+      <StateNumber>1028</StateNumber>
     </table>
     <table id="33" parent="16" name="beef">
       <ObjectId>16906</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>985</StateNumber>
+      <StateNumber>1094</StateNumber>
     </table>
     <table id="34" parent="16" name="person2">
       <ObjectId>16647</ObjectId>
@@ -990,21 +989,33 @@ sequence|table|16904|16906|1
       <StateNumber>971</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="40" parent="32" name="basket_pkey">
+    <column id="40" parent="32" name="name_product">
+      <Position>7</Position>
+      <DataType>varchar(255)|0s</DataType>
+      <StateNumber>998</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="41" parent="32" name="sum_price">
+      <Position>8</Position>
+      <DataType>double precision|0s</DataType>
+      <StateNumber>1028</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <index id="42" parent="32" name="basket_pkey">
       <ObjectId>16556</ObjectId>
       <StateNumber>990</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="41" parent="32" name="basket_pkey">
+    <key id="43" parent="32" name="basket_pkey">
       <ObjectId>16557</ObjectId>
       <StateNumber>686</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>basket_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="42" parent="32" name="fk626rbh84hbcxr2o035padcpqp">
+    <foreign-key id="44" parent="32" name="fk626rbh84hbcxr2o035padcpqp">
       <ObjectId>16899</ObjectId>
       <StateNumber>975</StateNumber>
       <ColNames>external_key</ColNames>
@@ -1014,7 +1025,7 @@ sequence|table|16904|16906|1
       <RefKeyName>person2_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="43" parent="33" name="id">
+    <column id="45" parent="33" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1022,46 +1033,52 @@ sequence|table|16904|16906|1
       <DefaultExpression>nextval(&apos;beef_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="44" parent="33" name="url_image">
+    <column id="46" parent="33" name="url_image">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>985</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="45" parent="33" name="count">
+    <column id="47" parent="33" name="count">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>985</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="46" parent="33" name="name_product">
+    <column id="48" parent="33" name="name_product">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>985</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="47" parent="33" name="price">
+    <column id="49" parent="33" name="price">
       <Position>5</Position>
       <DataType>double precision|0s</DataType>
       <StateNumber>985</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <index id="48" parent="33" name="beef_pkey">
+    <column id="50" parent="33" name="type">
+      <Position>6</Position>
+      <DataType>varchar|0s</DataType>
+      <StateNumber>1094</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="51" parent="33" name="beef_pkey">
       <ObjectId>16913</ObjectId>
       <StateNumber>985</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <key id="49" parent="33" name="beef_pkey">
+    <key id="52" parent="33" name="beef_pkey">
       <ObjectId>16914</ObjectId>
       <StateNumber>985</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>beef_pkey</UnderlyingIndexName>
     </key>
-    <column id="50" parent="34" name="id">
+    <column id="53" parent="34" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1069,80 +1086,80 @@ sequence|table|16904|16906|1
       <DefaultExpression>nextval(&apos;person2_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="51" parent="34" name="email">
+    <column id="54" parent="34" name="email">
       <Position>2</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>768</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="52" parent="34" name="first_name">
+    <column id="55" parent="34" name="first_name">
       <Position>3</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>768</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="53" parent="34" name="last_name">
+    <column id="56" parent="34" name="last_name">
       <Position>4</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>768</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="54" parent="34" name="login">
+    <column id="57" parent="34" name="login">
       <Position>5</Position>
       <DataType>varchar|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>768</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="55" parent="34" name="password">
+    <column id="58" parent="34" name="password">
       <Position>6</Position>
       <DataType>varchar(60)|0s</DataType>
       <NotNull>1</NotNull>
       <StateNumber>780</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="56" parent="34" name="role">
+    <column id="59" parent="34" name="role">
       <Position>7</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>773</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="57" parent="34" name="status">
+    <column id="60" parent="34" name="status">
       <Position>8</Position>
       <DataType>varchar|0s</DataType>
       <StateNumber>774</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="58" parent="34" name="password_return">
+    <column id="61" parent="34" name="password_return">
       <Position>10</Position>
       <DataType>varchar(255)|0s</DataType>
       <StateNumber>805</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="59" parent="34" name="person2_pkey">
+    <index id="62" parent="34" name="person2_pkey">
       <ObjectId>16653</ObjectId>
       <StateNumber>780</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>
     </index>
-    <index id="60" parent="34" name="person2_email_key">
+    <index id="63" parent="34" name="person2_email_key">
       <ObjectId>16655</ObjectId>
       <StateNumber>780</StateNumber>
       <ColNames>email</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="61" parent="34" name="person2_pkey">
+    <key id="64" parent="34" name="person2_pkey">
       <ObjectId>16654</ObjectId>
       <StateNumber>768</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>person2_pkey</UnderlyingIndexName>
     </key>
-    <key id="62" parent="34" name="person2_email_key">
+    <key id="65" parent="34" name="person2_email_key">
       <ObjectId>16656</ObjectId>
       <StateNumber>768</StateNumber>
       <ColNames>email</ColNames>

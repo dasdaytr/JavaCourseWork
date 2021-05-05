@@ -1,36 +1,3 @@
-<!--
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">>
-<head>
-    <meta charset="UTF-8">
-    <title>Basket</title>
-    <style>
-        table {
-            border: 1px solid grey;
-            width: 100%;
-
-        }
-        /* границы ячеек первого ряда таблицы */
-        th {
-            border: 1px solid grey;
-        }
-        /* границы ячеек тела таблицы */
-        td {
-            border: 1px solid grey;
-        }
-    </style>
-</head>
-<body>
-<table>
-
-    <tr><th>Мясо</th><th>цена</th><th>колличество</th></tr>
-    <tr th:each="basket:${basket}">
-        <td th:text="${basket.getNameproduct()}"></td><td th:text="${basket.getPrice()}"></td><td th:text="${basket.getCount()}"></td>
-    </tr>
-</table>
-</body>
-</html>-->
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -553,6 +520,9 @@
             <div class="im"><a href="/mainPage/basket">
                 Корзина
             </a></div>
+            <div class="im"><a href="/logout">
+                Выйти
+            </a></div>
         </div>
     </div>
 </header>
@@ -564,7 +534,7 @@
                     <span></span>
                 </div>
                 <li class="abc">
-                    <a href="../index.html" class="menu-link">Каталог</a>
+                    <a href="/mainPaage" class="menu-link">Каталог</a>
                     <ul class="sub-menu-listt">
                         <li >
                             <a href="proch.html" class="sub-menu-link">Процессоры</a>
@@ -617,28 +587,31 @@
                         <td class="del1" ><p th:text="${basket.getPrice()}"></p><input type="hidden" th:value="${basket.getPrice()}"  name="price"></td>
                         <td class="del1" >
                             <div class="number">
-                                <button id="asd" class="number-minus" type="button" data-id="arr">-</button>
-                                <input id="ada"type="number" min="0" th:value="${basket.getCount()}"  readonly>
-                                <button id="vak"class="number-plus" type="button" >+</button>
+                                <button class="number-minus" type="button" data-id="arr">-</button>
+                                <input type="number" min="0" th:value="${basket.getCount()}"  readonly>
+                                <button class="number-plus" type="button" >+</button>
+                                <input type="text" value="Cохранить">
                             </div>
                         </td>
-                        <td class="del1"><p id = "p1" th:text="${basket.getSumPrice()}"></p> <input type="hidden" th:value="${basket.getSumPrice()}" form="myForm"></td>
+                        <td class="del1"><p class= "sum" th:text="${basket.getSumPrice()}">10.0</p><input type="hidden" th:value="${basket.getSumPrice()}" ></td>
                         <td class="del1">
                             <form action="/mainPage/baskett" method="post">
                             <input type="hidden" th:value="${basket.getNameproduct()}" name="nameProduct">
                             <input type="submit" value="Удалить" class="form_button">
                             </form>
                         </td>
+
                 </tr>
+
             </table>
             <div class="jav">
                 <div class="koll">
                     <div class="k"><p>Количесто товара</p></div>
-                    <div class="chislo"><p id="p4">2</p></div>
+                    <div class="chislo"><p id="p4" th:text="${count}"></p></div>
                 </div>
                 <div class="koll">
                     <div class="inog"><p>Итого к олате</p></div>
-                    <div class="OS"><p id="p3">19000 Руб</p></div>
+                    <div class="OS"><p id="p3" th:text="${sum}+' Руб'"></p></div>
                 </div>
             </div>
             <div class="oplate"><div class="block"><a href="" class="button1">Оплатить</a></div></div>

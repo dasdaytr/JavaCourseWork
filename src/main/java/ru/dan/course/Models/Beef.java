@@ -2,10 +2,7 @@ package ru.dan.course.Models;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Data
@@ -21,5 +18,7 @@ public class Beef {
     private int count;
 
     private String UrlImage;
+    @Column(name = "type")
+    private String type;
 
 }

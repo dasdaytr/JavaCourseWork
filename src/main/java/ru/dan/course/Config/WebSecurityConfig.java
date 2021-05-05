@@ -30,7 +30,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        System.out.println("protected void configure(HttpSecurity http) throws Exception");
         http    .csrf().disable()
                 .authorizeRequests()
                     .antMatchers("/").permitAll()
@@ -49,13 +48,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         daoAuthenticationProvider.setUserDetailsService(userDetailsService);
-        System.out.println("protected DaoAuthenticationProvider daoAuthenticationProvider" + daoAuthenticationProvider);
         return daoAuthenticationProvider;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        System.out.println("protected void configure(AuthenticationManagerBuilder auth) throws Exception");
         auth.authenticationProvider(daoAuthenticationProvider());
     }
     @Bean
