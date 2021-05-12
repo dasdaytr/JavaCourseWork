@@ -22,9 +22,7 @@
 
         /*Header
         =========================================================================================*/
-        .hide {
-            display: none;
-        }
+
         .container{
             width: 100%;
             max-width: 1200px;
@@ -46,7 +44,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-direction: block;
+
         }
 
         p{
@@ -96,10 +94,10 @@
                 transition: all 0.3s ease 0s;
             }
             .burger:before{
-                top:0px;
+                top:0;
             }
             .burger:after{
-                bottom: 0px;
+                bottom: 0;
             }
             .container{
                 max-width: 970px;
@@ -110,38 +108,12 @@
             .iner__link{
                 font-size: 18px;
             }
-            .active:before{
-                transform: rotate(45deg);
-                top:10px;
-            }
-            .active:after{
-                transform: rotate(-45deg);
-                bottom: 9px;
-            }
+
             .active span{
                 transform: scale(0);
             }
-            .texnika.active{
-                visibility: hidden;
-            }
-            .chenth.active{
-                transition: all 0.4s ease 0s;
-                background: #a81a32;
 
-            }
-            .sub-menu-list.active{
-                visibility: visible;
-                box-shadow: 0 0 0px;
-                width: 500px;
-            }
-            .url-1.active{
-                visibility: hidden;
-            }
-            .sub-menu-link.active{
-                color: white;
-                font-size: 30px;
-                font-weight: 700;
-            }
+
         }
         @media (max-width: 992px) {
             .container{
@@ -274,9 +246,7 @@
             background: #a81a32;
 
         }
-        .chena{
-            font-weight: 700;
-        }
+
         /*Футер*/
         .futer{
             margin-top:30px;
@@ -285,7 +255,6 @@
         .iner-futer{
             display: flex;
             justify-content: space-between;
-            flex-direction: block;
         }
         .PRAIM{
             font-size: 30px;
@@ -331,7 +300,7 @@
             text-align: center;
             -moz-appearance: textfield;
             -webkit-appearance: textfield;
-            appearance: textfield;
+
         }
         .number input[type="number"]::-webkit-outer-spin-button,
         .number input[type="number"]::-webkit-inner-spin-button {
@@ -404,9 +373,6 @@
     <div class="container">
         <div class="chapka">
             <ul class="menu-list">
-                <div class="burger">
-                    <span></span>
-                </div>
                 <li class="abc">
                     <a href="/mainPaage" class="menu-link">Каталог</a>
                     <ul class="sub-menu-list">
@@ -437,8 +403,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src=" https://code.jquery.com/jquery-1.11.2.js "></script>
-<script src="..\JS/java.js"></script>
 <div class="chenth">
     <div class="container">
         <div class="imagic">
@@ -449,7 +413,7 @@
                         <a href="" class="tex">
                             <img th:src="${beef.getUrlImage()}" alt="">
                         </a>
-                        <div class="url-3" id="url-33"><p class="ul" th:text="${beef.getNameProduct()}"></p>
+                        <div class="url-3"><p class="ul" th:text="${beef.getNameProduct()}"></p>
                             <input type="hidden" th:value="${beef.getNameProduct()}" name="nameProduct">
                         </div>
                         <div><p th:text="${beef.getPrice()}"></p>
@@ -498,13 +462,13 @@
                     <div class="met"><h3>БУДЬ В КУРСЕ</h3>
                         <div class="icon">
                             <div class="i">
-                                <a href="https://www.instagram.com/"><img src="..\img\icon\Instagram_icon-icons.com_66804.png" alt=""></a>
+                                <a href="https://www.instagram.com/"><img src="" ></a>
                             </div>
                             <div class="i">
-                                <a href="https://web.telegram.org/#/im"> <img src="..\img\icon\telegram_icon-icons.com_72055.png" alt=""></a>
+                                <a href="https://web.telegram.org/#/im"> <img src="" ></a>
                             </div>
                             <div class="i">
-                                <a href="https://vk.com/feed"> <img src="..\img\icon\vkontakte_icon-icons.com_69251.png" alt=""></a>
+                                <a href="https://vk.com/feed"> <img src="" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -512,5 +476,6 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
