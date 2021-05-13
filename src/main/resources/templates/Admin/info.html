@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
     <title>Document</title>
     <meta name="viewport" content="device-width">
@@ -164,7 +162,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-
+            flex-direction: block;
         }
         p{
             line-height: 0.9em;
@@ -309,7 +307,7 @@
             text-align: center;
             -moz-appearance: textfield;
             -webkit-appearance: textfield;
-
+            appearance: textfield;
         }
         .number input[type="number"]::-webkit-outer-spin-button,
         .number input[type="number"]::-webkit-inner-spin-button {
@@ -369,14 +367,14 @@
             background: red;
             text-align: center;
             text-decoration: none;
-
+            flex-direction: block;
             padding-top: 5px;
             background:#c21e3a;
             border-radius: 10px
         }
         .block a{
             text-decoration: none;
-
+            flex-direction: block;
             color: white;
 
         }
@@ -440,10 +438,23 @@
             margin-top:30px;
             background: white;
         }
+        .form_button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-family: sans-serif;
+            letter-spacing: 1px;
+            font-size: 16xp;
+            color :#fff ;
+            background-color: #0071f0;
+            outline: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
         .iner-futer{
             display: flex;
             justify-content: space-between;
-
+            flex-direction: block;
         }
         .PRAIM{
             font-size: 30px;
@@ -524,18 +535,18 @@
                 </div>
                 <li class="abc">
                     <a href="/mainPaage" class="menu-link">Каталог</a>
-                    <ul class="sub-menu-list">
+                    <ul class="sub-menu-listt">
                         <li >
-                            <a href="/product/PoultryMeat" class="sub-menu-link">Мясо птицы</a>
+                            <a href="proch.html" class="sub-menu-link">Мясо птицы</a>
                         </li>
                         <li>
-                            <a href="/product/beef" class="sub-menu-link">Говядина</a>
+                            <a href="vid.html" class="sub-menu-link">Говядина</a>
                         </li>
                         <li>
-                            <a href="/product/Pork" class="sub-menu-link">Свинина</a>
+                            <a href="MT.html" class="sub-menu-link">Свини</a>
                         </li>
                         <li>
-                            <a href="/product/DairyProducts" class="sub-menu-link">Молочные продукты</a>
+                            <a href="SSD.html" class="sub-menu-link">Молочные продукты</a>
                         </li>
                     </ul>
                 </li>
@@ -552,39 +563,46 @@
         </div>
     </div>
 </div>
-<div class="chenth">
+<div class="kor">
     <div class="container">
-        <div class="imagic">
-            <div class="url-1">Главная</div>
-            <div class="texnika">
-                <div class="url-2">
-                    <a href="/product/PoultryMeat" class="tex">
-                        <img src="http://sc01.alicdn.com/kf/UTB8XPQDyFfFXKJk43Otq6xIPFXaE/Grade-A-Halal-Whole-frozen-chicken-Producer.jpg_100x100.jpg" alt="">
-                    </a>
-                    <div class="url-3">Мясо птицы</div>
-                </div>
-                <div class="url-2">
-                    <a href="/product/beef" class="tex">
-                        <img src="img/index/lg.jpg" alt="">
-                    </a>
-                    <div class="url-3">Говядина</div>
-                </div>
-                <div class="url-2">
-                    <a href="/product/Pork" class="tex">
-                        <img src="img/index/120g.jpg" alt="">
-                    </a>
-                    <div class="url-3">Свинина</div>
-                </div>
-                <div class="url-2">
-                    <a href="/product/DairyProducts" class="tex">
-                        <img src="img/index/3dad2e4c8009f0fb25e74a5116f265a1.jpg" alt="">
-                    </a>
-                    <div class="url-3">Молочные продукты</div>
-                </div>
-            </div>
+        <div class="korzina">Пользователи</div>
+        <div class="bbb">
+
+            <table>
+                <tr>
+                    <td>Имя</td>
+                    <td>Фамилия</td>
+                    <td>Почта</td>
+                    <td></td>
+                </tr>
+                <tr th:each="person:${allPerson}">
+                    <td class="del1" ><p th:text="${person.getFirstname()}"></p><input type="hidden" th:value="${person.getFirstname()}" name="nameProduct"></td>
+                    <td class="del1" ><p th:text="${person.getLastname()}"></p><input type="hidden" th:value="${person.getLastname()}"  name="price"></td>
+
+                    <td class="del1"><p class= "sum" th:text="${person.getEmail()}"></p><input type="hidden" th:value="${person.getEmail()}" ></td>
+                    <td class="del1">
+                        <form action="/adminPage/infoPerson" method="post">
+                            <input type="hidden"  name="email" th:value="${person.getEmail()}">
+                            <input type="submit" value="Удалить" class="form_button">
+                        </form>
+                    </td>
+
+                </tr>
+
+            </table>
+
         </div>
     </div>
 </div>
+<script type="text/javascript" src=" https://code.jquery.com/jquery-1.11.2.js "></script>
+<script>
+
+
+
+
+</script>
+
+<script src="..\JS/java.js"></script>
 <div class="futer">
     <div class="container">
         <div class="iner-futer">
@@ -605,10 +623,12 @@
             </div>
             <div class="amv2">
                 <h3>МЕНЮ В ФУТОРЕ</h3>
-                <a class="lin" href="/product/PoultryMeat">Мясо птицы</a>
-                <a class="lin" href="/product/beef">Говядина</a>
-                <a class="lin" href="/product/Pork">Свинина</a>
-                <a class="lin" href="/product/DairyProducts">Молочные продукты</a>
+                <a class="lin" href="vid.html">Видеокарты</a>
+                <a class="lin" href="proch.html">Процессоры</a>
+                <a class="lin" href="MT.html">Материнские платы</a>
+                <a class="lin" href="SSD.html">SSD</a>
+                <a class="lin" href="OP.html">Оперативная память</a>
+                <a class="lin" href="JD.html">Жесткие диски</a>
             </div>
             <div class="amv1">
                 <h3>ПРИНИМАЕМ К ОПЛАТЕ</h3>
@@ -616,7 +636,7 @@
                     <h3>БУДЬ В КУРСЕ</h3>
                     <div class="icon">
                         <div class="i">
-                            <a href="https://www.instagram.com/"><img src="..\icon\Instagram_icon-icons.com_66804.png" alt=""></a>
+                            <a href="https://www.instagram.com/"><img src="..\img\icon\Instagram_icon-icons.com_66804.png" alt=""></a>
                         </div>
                         <div class="i">
                             <a href="https://web.telegram.org/#/im"> <img src="..\img\icon\telegram_icon-icons.com_72055.png" alt=""></a>
