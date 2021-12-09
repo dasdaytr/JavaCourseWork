@@ -536,18 +536,7 @@
                 <li class="abc">
                     <a href="/mainPaage" class="menu-link">Каталог</a>
                     <ul class="sub-menu-listt">
-                        <li >
-                            <a href="proch.html" class="sub-menu-link">Мясо птицы</a>
-                        </li>
-                        <li>
-                            <a href="vid.html" class="sub-menu-link">Говядина</a>
-                        </li>
-                        <li>
-                            <a href="MT.html" class="sub-menu-link">Свини</a>
-                        </li>
-                        <li>
-                            <a href="SSD.html" class="sub-menu-link">Молочные продукты</a>
-                        </li>
+
                     </ul>
                 </li>
                 <li>
@@ -577,7 +566,7 @@
                     <td></td>
                 </tr>
                 <tr th:each="basket:${basketPerson}">
-                        <td class="del1" ><p th:text="${basket.getNameproduct()}"></p><input type="hidden" th:value="${basket.getNameproduct()}" name="nameProduct"></td>
+                        <td class="del1" ><p th:text="${basket.getNameproduct()}"></p><input type="hidden" th:value="${basket.getNameproduct()}" name="nameBook"></td>
                         <td class="del1" ><p th:text="${basket.getPrice()}"></p><input type="hidden" th:value="${basket.getPrice()}"  name="price"></td>
                         <td class="del1" >
                             <div class="number">
@@ -590,7 +579,7 @@
                         <td class="del1"><p class= "sum" th:text="${basket.getSumPrice()}">10.0</p><input type="hidden" th:value="${basket.getSumPrice()}" ></td>
                         <td class="del1">
                             <form action="/mainPage/baskett" method="post">
-                            <input type="hidden" th:value="${basket.getNameproduct()}" name="nameProduct">
+                            <input type="hidden" th:value="${basket.getNameproduct()}" name="nameBook">
                             <input type="submit" value="Удалить" class="form_button">
                             </form>
                         </td>
@@ -720,12 +709,7 @@
             </div>
             <div class="amv2">
                 <h3>МЕНЮ В ФУТОРЕ</h3>
-                <a class="lin" href="vid.html">Видеокарты</a>
-                <a class="lin" href="proch.html">Процессоры</a>
-                <a class="lin" href="MT.html">Материнские платы</a>
-                <a class="lin" href="SSD.html">SSD</a>
-                <a class="lin" href="OP.html">Оперативная память</a>
-                <a class="lin" href="JD.html">Жесткие диски</a>
+
             </div>
             <div class="amv1">
                 <h3>ПРИНИМАЕМ К ОПЛАТЕ</h3>

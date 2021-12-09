@@ -1,69 +1,10 @@
-<!--<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        .position{
-            display: flex;
-        }
-        .text{
-            color: red;
-        }
-    </style>
-</head>
-<body>
-<form action="/sing_in" method="post" th:object="${infoRegistrationUser}" >
-    <div class="text"></div>
-    <div class="position">
-        <label for="firstname">Enter firstname:</label>
-        <input type="text" name="firstname"  id="firstname"/>
-        <div style="color:red" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}"></div>
-    </div>
-
-    <div class="position">
-        <label for="lastname">Enter lastname:</label>
-        <input type="text" name="lastname" id="lastname"/>
-        <div style="color:red" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"></div>
-    </div>
-
-    <div class="position" align="left">
-        <label for="login">Enter login:</label>
-        <input type="text" name="login" id="login" />
-        <div style="color:red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
-
-    </div>
-
-    <div class="position">
-        <label for="email">Enter email:</label>
-        <input type="text" name="email" id="email" />
-        <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
-
-    </div>
-
-    <div class="position">
-        <label for="password">Enter password:</label>
-        <input type="password" name="password" id="password" />
-        <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
-
-    </div>
-
-    <div class="position">
-        <label for="passwordReturn">Enter passwordReturn:</label>
-        <input type="password" name="passwordReturn" id="passwordReturn" />
-    </div>
-    <div>
-        <input type="submit" value="Create">
-    </div>
-</form>
-</body>
-</html>-->
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
     <title>Spring Security Example </title>
     <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <style>
         @import url(http://weloveiconfonts.com/api/?family=fontawesome);
         @import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
@@ -204,6 +145,13 @@
             text-decoration: none;
             color: #28ad63;
         }
+        select{
+            color: #777;
+            margin-bottom: 14px;
+            background-color: #eee;
+            padding: 6px 10px;
+            width: 348px;
+        }
     </style>
 </head>
 <body>
@@ -213,19 +161,51 @@
         <h2><span class="fontawesome-lock"></span>Добавление товара</h2>
         <fieldset>
             <p><label for="FirstName">Название продукта</label></p>
-            <p><input type="text" id="FirstName" name="nameProduct" >
+            <p><input type="text" id="FirstName" name="nameBook" >
 
             <p><label for="LastName">Изначальная цена</label></p>
             <p><input type="text" id="LastName" name="price" >
             </p>
 
-            <p><label for="login1">Тип продукта</label></p>
-            <p ><input type="text" id="login1" name="type" >
+            <p><label for="LastName">Адрес изображения</label></p>
+            <p><input type="text" id="url" name="UrlImage" >
+            </p>
+
+            <p><label for="publish">Издательство</label></p>
+            <p><select id="select" class="form-control" ></select></p>
+            <input id="publish" type="hidden" name="publish">
 
             <p><input type="submit" value="Добавить товар" ></p>
             <a href="/adminPage">Назад</a>
         </fieldset>
     </div>
+    <script>
+        let urlMain = 'http://localhost:8080/api/publishing'
+        let select = null;
+        let hidden_publish = null
+        function getPublishing(){
+            $.get(urlMain).done(function (data){
+                setSubMenuList(data)
+                select = document.querySelector('#select');
+                hidden_publish = document.querySelector('#publish')
+                hidden_publish.value = select.value
+                console.log(select.value)
+                select.addEventListener('change', function(){
+                    hidden_publish.value = select.value
+                    console.log(select.value)
+                });
+            })
+        }
+        function setSubMenuList(data){
+            for(let i in data){
+                $(".form-control").append(
+                    "<option>" + data[i][1] + "</option>"
+                )
+            }
+        }
+        getPublishing()
+
+    </script>
 </form>
 </body>
 </html>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--//<link rel="stylesheet" href="..\CSS\main.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
     <title>Document</title>
     <meta name="viewport" content="device-width">
@@ -222,6 +223,11 @@
             max-width: 200px;
 
         }
+        .url-2 img{
+            width: 120px;
+            height: 172px;
+        }
+
         .url-2:hover{
             box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
         }
@@ -376,18 +382,7 @@
                 <li class="abc">
                     <a href="/mainPaage" class="menu-link">Каталог</a>
                     <ul class="sub-menu-list">
-                        <li >
-                            <a href="/product/PoultryMeat" class="sub-menu-link">Мясо птицы</a>
-                        </li>
-                        <li>
-                            <a href="/product/beef" class="sub-menu-link">Говядина</a>
-                        </li>
-                        <li>
-                            <a href="/product/Pork" class="sub-menu-link">Свинина</a>
-                        </li>
-                        <li>
-                            <a href="/product/DairyProducts" class="sub-menu-link">Молочные продукты</a>
-                        </li>
+
                     </ul>
                 </li>
                 <li>
@@ -403,6 +398,7 @@
         </div>
     </div>
 </div>
+<script src="../js/js_main_page.js"></script>
 <div class="chenth">
     <div class="container">
         <div class="imagic">
@@ -411,10 +407,11 @@
                 <div class="url-2" id="url-33" th:each="beef:${beefPerson}">
                     <form th:action="${url}" method="post">
                         <a href="" class="tex">
+                            <input type="hidden" th:value="${beef.getUrlImage()}" name="UrlImage">
                             <img th:src="${beef.getUrlImage()}" alt="">
                         </a>
-                        <div class="url-3"><p class="ul" th:text="${beef.getNameProduct()}"></p>
-                            <input type="hidden" th:value="${beef.getNameProduct()}" name="nameProduct">
+                        <div class="url-3"><p class="ul" th:text="${beef.getNameBook()}"></p>
+                            <input type="hidden" th:value="${beef.getNameBook()}" name="nameBook">
                         </div>
                         <div><p th:text="${beef.getPrice()}"></p>
                             <input type="hidden" th:value="${beef.getPrice}" name="price">
